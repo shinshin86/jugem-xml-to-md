@@ -1,11 +1,32 @@
 {
+  "name": "jugem-xml-to-md",
+  "version": "0.1.0",
+  "description": "This is a CLI tool to convert JUGEM-XML to markdown format.",
   "main": "dist/index.js",
+  "bin": {
+    "jugem-xml-to-md": "dist/index.js"
+  },
   "scripts": {
     "start": "node dist/index.js",
     "build": "NODE_ENV=production webpack",
     "dev": "webpack && yarn start",
     "fmt": "eslint --fix '**/*ts' && prettier --write '**/*.{ts,js,json,md}'"
   },
+  "keywords": [
+    "markdown",
+    "converter",
+    "jugem-xml"
+  ],
+  "author": "shinshin86 <shinshin86npm@gmail.com> (https://github.com/shinshin86)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shinshin86/jugem-xml-to-md.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shinshin86/jugem-xml-to-md/issues"
+  },
+  "homepage": "https://github.com/shinshin86/jugem-xml-to-md#readme",
   "devDependencies": {
     "@types/node": "^11.13.8",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
