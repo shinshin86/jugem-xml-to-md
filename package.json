@@ -1,11 +1,36 @@
 {
+  "name": "jugem-xml-to-md",
+  "version": "0.0.1",
+  "description": "This is a CLI tool to convert JUGEM-XML to markdown format.",
   "main": "dist/index.js",
+  "bin": {
+    "jugem-xml-to-md": "dist/index.js"
+  },
   "scripts": {
     "start": "node dist/index.js",
     "build": "NODE_ENV=production webpack",
-    "dev": "webpack && yarn start",
-    "fmt": "eslint --fix '**/*ts' && prettier --write '**/*.{ts,js,json,md}'"
+    "dev": "webpack && npm run start",
+    "fmt": "eslint --fix '**/*ts' && prettier --write '**/*.{ts,js,json,md}'",
+    "prepublishOnly": "npm run build"
   },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "markdown",
+    "converter",
+    "jugem-xml"
+  ],
+  "author": "shinshin86 <shinshin86npm@gmail.com> (https://github.com/shinshin86)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shinshin86/jugem-xml-to-md.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shinshin86/jugem-xml-to-md/issues"
+  },
+  "homepage": "https://github.com/shinshin86/jugem-xml-to-md#readme",
   "devDependencies": {
     "@types/node": "^11.13.8",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
@@ -14,12 +39,14 @@
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
     "prettier": "^1.17.0",
+    "shebang-loader": "0.0.1",
     "ts-loader": "^5.4.4",
     "typescript": "^3.4.5",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1"
   },
   "dependencies": {
-    "fast-xml-parser": "^3.14.0"
+    "fast-xml-parser": "^3.14.0",
+    "glob": "^7.1.6"
   }
 }
