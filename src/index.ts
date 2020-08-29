@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 const { parse } = require("fast-xml-parser");
-const { readFileSync, writeFileSync } = require("fs");
+const { readFileSync, writeFileSync, existsSync, mkdirSync } = require("fs");
 const glob = require("glob");
 
 const xmlToJson = (xml: string): any => {
@@ -58,6 +58,11 @@ ${md.body.replace(disableImagePath, availableImagePath)}`;
 (async () => {
   console.log("START: generate markdown files");
 
+  const reusltDir = "result";
+
+  if (!existsSync(reusltDir)) {
+    mkdirSync(reusltDir);
+  }
   const xmlFilePathList = glob.sync("xml-data/*.xml");
 
   for (const xmlPath of xmlFilePathList) {
