@@ -13,6 +13,9 @@
     "fmt": "eslint --fix '**/*ts' && prettier --write '**/*.{ts,js,json,md}'",
     "prepublishOnly": "npm run build"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "markdown",
     "converter",
