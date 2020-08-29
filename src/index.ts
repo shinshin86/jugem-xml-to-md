@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const { parse } = require("fast-xml-parser");
 const { readdirSync, readFileSync, writeFileSync } = require("fs");
 

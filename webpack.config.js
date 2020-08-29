@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const isProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        use: ["ts-loader"],
+        use: ["ts-loader", "shebang-loader"],
         exclude: /node_modules/
       }
     ]
@@ -18,5 +19,8 @@ module.exports = {
   },
   output: {
     filename: "index.js"
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
+]
 };
