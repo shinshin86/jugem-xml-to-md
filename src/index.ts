@@ -1,7 +1,8 @@
 #! /usr/bin/env node
 
 const { parse } = require("fast-xml-parser");
-const { readdirSync, readFileSync, writeFileSync } = require("fs");
+const { readFileSync, writeFileSync } = require("fs");
+const glob = require("glob");
 
 const xmlToJson = (xml: string): any => {
   return parse(xml);
@@ -57,13 +58,15 @@ ${md.body.replace(disableImagePath, availableImagePath)}`;
 (async () => {
   console.log("START: generate markdown files");
 
-  const xmlFiles = readdirSync("xml-data");
+  const xmlFilePathList = glob.sync("xml-data/*.xml");
 
-  for (const file of xmlFiles) {
-    console.log(`processing file ===> ${file}`);
+  for (const xmlPath of xmlFilePathList) {
+    console.log(`processing file ===> ${xmlPath}`);
 
-    const xml = await readFileSync(`xml-data/${file}`, "utf8");
+    const xml = await readFileSync(xmlPath, "utf8");
     const json = xmlToJson(xml);
+    if (!json) continue;
+
     const mdList = convertMd(json);
 
     if (!mdList) console.log("FINISH: Not found blog data");
