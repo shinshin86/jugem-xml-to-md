@@ -12,10 +12,10 @@ yarn global add jugem-xml-to-md
 
 ## Usage
 
-変換対象の xml ファイルが `./xml-data` 内にある状態で下記のコマンドを実行してください。
-(後々、対象のパスをオプションで指定できるようにする予定です。 https://github.com/shinshin86/jugem-xml-to-md/issues/4 )
+変換対象の xml ファイルが `./xml-data` 内にある状態で下記のコマンドを実行してください。  
+(後々、対象のパスをオプションで指定できるようにする予定です。 [Add read path option (GitHub Issue)](https://github.com/shinshin86/jugem-xml-to-md/issues/4))
 
-`markdown`に変換されたファイルが `./result` 上に出力されます。
+`markdown`に変換されたファイルが `./result` 上に出力されます。  
 (`result` ディレクトリが存在しない場合、スクリプト実行時に作成されます)
 
 ```bash
