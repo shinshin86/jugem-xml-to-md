@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+const webpack = require("webpack");
 const isProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
@@ -21,6 +21,6 @@ module.exports = {
     filename: "index.js"
   },
   plugins: [
-    new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
-]
+    new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true })
+  ]
 };
