@@ -2,39 +2,59 @@
 
 jugem xml convert to markdown.
 
+## Install
+
+```bash
+npm install -g jugem-xml-to-md
+# or
+yarn global add jugem-xml-to-md
+```
+
 ## Usage
+
+変換対象の xml ファイルが `./xml-data` 内にある状態で下記のコマンドを実行してください。
+(後々、対象のパスをオプションで指定できるようにする予定です。 https://github.com/shinshin86/jugem-xml-to-md/issues/4 )
+
+`markdown`に変換されたファイルが `./result` 上に出力されます。
+(`result` ディレクトリが存在しない場合、スクリプト実行時に作成されます)
+
+```bash
+jugem-xml-to-md
+```
+
+## Development
 
 Scripts start
 
 ```bash
-yarn start
+npm run start
 ```
 
 Scrpts Build (Production)
 
 ```bash
-yarn build
+npm run build
 ```
 
 Development (Build and Start with development mode)
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 Lint and Preitter
 
 ```bash
-yarn fmt
+npm run fmt
 ```
 
-## Jugem XML
+## Jugem XML について
 
-`Jugem XML` を`json`に変換した場合の構造は下記のようになる
+`Jugem XML` を`json`に変換した場合の構造は下記のようになります。
 
-実際の変換コードも下記となる
+実際の変換コードも下記となります。
 
-変換には `fast-xml-parser` を用いた
+変換には `fast-xml-parser` を用いています。
 
 ```typescript
 const { parse } = require("fast-xml-parser");
@@ -92,7 +112,7 @@ const xmlToJson = (xml: string): any => {
 }
 ```
 
-この json 型を下記のような`markdown`に変換する
+この json 型を下記のような`markdown`に変換していきます。
 
 ```markdown
 ---
@@ -107,6 +127,7 @@ entry.description(全て展開)
 
 ### 注意点
 
-エクスポートした XML データの場合、画像パスが実際のサイト上で指しているものとは違うものが吐き出される。このパスにアクセスしても画像自体は見つからず 404 が返される。
-そのため、変換の合間に古い画像パスから現在の画像パスに変換する処理を挟んでいる。
+エクスポートした XML データの場合、画像パスが実際のサイト上で指しているものとは違うものが吐き出されるようです。
+このパスにアクセスしても画像自体は見つからず 404 が返されます。
+そのため、変換の合間に古い画像パスから現在の画像パスに変換する処理を挟んでいます。
 (途中で画像パスの仕様が変わったのだが、エクスポート機能の方は未対応ということなのだろうか？)
