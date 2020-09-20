@@ -3,6 +3,7 @@
 const { parse } = require("fast-xml-parser");
 const { readFileSync, writeFileSync, existsSync, mkdirSync } = require("fs");
 const glob = require("glob");
+const path = require("path");
 
 const xmlToJson = (xml: string): any => {
   return parse(xml);
@@ -64,7 +65,8 @@ ${md.body.replace(disableImagePath, availableImagePath)}`;
   if (!existsSync(reusltDir)) {
     mkdirSync(reusltDir);
   }
-  const xmlFilePathList = glob.sync("xml-data/*.xml");
+
+  const xmlFilePathList = glob.sync(path.join("xml-data", "*.xml"));
 
   for (const xmlPath of xmlFilePathList) {
     console.log(`processing file ===> ${xmlPath}`);
