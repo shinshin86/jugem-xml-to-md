@@ -66,7 +66,9 @@ ${md.body.replace(disableImagePath, availableImagePath)}`;
     mkdirSync(reusltDir);
   }
 
-  const xmlFilePathList = glob.sync(path.join("xml-data", "*.xml"));
+  const targetDif = process.argv[2] || "xml-data";
+
+  const xmlFilePathList = glob.sync(path.join(targetDif, "*.xml"));
 
   for (const xmlPath of xmlFilePathList) {
     console.log(`processing file ===> ${xmlPath}`);
