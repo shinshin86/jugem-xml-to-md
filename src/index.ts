@@ -11,7 +11,7 @@ const usage = (): void => {
 Description:
   This is a CLI tool to convert JUGEM-XML to markdown format.
 `);
-}
+};
 
 const xmlToJson = (xml: string): any => {
   return parse(xml);
@@ -66,7 +66,7 @@ ${md.body.replace(disableImagePath, availableImagePath)}`;
 };
 
 (async () => {
-  if(['-h', '--help'].includes(process.argv[2])) {
+  if (["-h", "--help"].includes(process.argv[2])) {
     usage();
     return;
   }
