@@ -1,9 +1,17 @@
 #! /usr/bin/env node
-
 const { parse } = require("fast-xml-parser");
 const { readFileSync, writeFileSync, existsSync, mkdirSync } = require("fs");
 const glob = require("glob");
 const path = require("path");
+
+const usage = (): void => {
+  console.log(`Usage:
+  jugem-xml-to-md [target dir]
+
+Description:
+  This is a CLI tool to convert JUGEM-XML to markdown format.
+`);
+}
 
 const xmlToJson = (xml: string): any => {
   return parse(xml);
@@ -58,6 +66,11 @@ ${md.body.replace(disableImagePath, availableImagePath)}`;
 };
 
 (async () => {
+  if(['-h', '--help'].includes(process.argv[2])) {
+    usage();
+    return;
+  }
+
   console.log("START: generate markdown files");
 
   const reusltDir = "result";
