@@ -1,6 +1,6 @@
 {
   "name": "jugem-xml-to-md",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is a CLI tool to convert JUGEM-XML to markdown format.",
   "main": "dist/index.js",
   "bin": {
