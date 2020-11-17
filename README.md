@@ -70,16 +70,12 @@ npm run fmt
 変換には `fast-xml-parser` を用いています。
 
 ```typescript
-const { parse } = require("fast-xml-parser");
+const { parse: xmlParse } = require("fast-xml-parser");
 const { readFileSync, writeFileSync } = require("fs");
-
-const xmlToJson = (xml: string): any => {
-  return parse(xml);
-};
 
 (async () => {
   const xml = await readFileSync("./jugem.xml", "utf8");
-  const json = xmlToJson(xml);
+  const json = xmlParse(xml);
   console.log(json);
 })();
 ```
