@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-const { parse } = require("fast-xml-parser");
+const { parse: xmlParse } = require("fast-xml-parser");
 const { readFileSync, writeFileSync, existsSync, mkdirSync } = require("fs");
 const glob = require("glob");
 const path = require("path");
@@ -11,10 +11,6 @@ const usage = (): void => {
 Description:
   This is a CLI tool to convert JUGEM-XML to markdown format.
 `);
-};
-
-const xmlToJson = (xml: string): any => {
-  return parse(xml);
 };
 
 const convertMd = (json: any): Array<object> => {
@@ -87,7 +83,7 @@ ${md.body.replace(disableImagePath, availableImagePath)}`;
     console.log(`processing file ===> ${xmlPath}`);
 
     const xml = await readFileSync(xmlPath, "utf8");
-    const json = xmlToJson(xml);
+    const json = xmlParse(xml);
     if (!json) continue;
 
     const mdList = convertMd(json);
